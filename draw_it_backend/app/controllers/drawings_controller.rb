@@ -1,7 +1,9 @@
 class DrawingsController < ApplicationController
 
     def index
-        drawings = Drawing.all
-        render json: drawings
+        render json: {
+            drawings: DrawingSerializer.all,
+            user: UserSerializer.all
+        }
     end
 end
