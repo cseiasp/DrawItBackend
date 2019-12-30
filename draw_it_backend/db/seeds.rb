@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 15.times {Drawing.create(user_id: 1, url: "../app/elephant.png")}
+
+User.create(username: "sarah", password: "sarah")
