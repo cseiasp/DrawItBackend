@@ -1,12 +1,5 @@
 class ApplicationController < ActionController::API
 
-    # def everything
-    #     render json: {
-    #         drawings: DrawingSerializer.all,
-    #         user: UserSerializer.all
-    #     }
-    # end
-    
     before_action :set_current_user
 
     def issue_token(payload)
@@ -33,6 +26,12 @@ class ApplicationController < ActionController::API
 
     def logged_in
         !!@current_user
+    end
+
+    def protected_action
+        if !logged_in?
+            render json: {errors: ['you must be logged in']}, status: :unauthorized
+        end
     end
 
 end
