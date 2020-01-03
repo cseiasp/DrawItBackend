@@ -24,11 +24,8 @@ class DrawingsController < ApplicationController
         drawing = Drawing.new(user_id: params[:user_id], url: params[:url])
 
         if drawing.save
-            render json: {
-                status: :created,
-                drawing: drawing,
-                user: UserSerializer.new(drawing.user)
-            }
+            render json: drawing
+               
         else
             render json: {
                 errors: drawing.errors.full_messages
